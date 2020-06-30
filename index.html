@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GifOS</title>
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar barra-gradiente">
+            ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803
+        </nav>
+        <div class="master-div">
+            <div class="div-principal">
+                <header class="cabecera">
+                    <!-- <img class="cabecera__logo" alt="gifOFLogo"> -->
+                    <div class="cabecera__logo"></div>
+                    <div class="cabecera__botonera">
+                        <button id="cguifos" class="cabecera__link boton boton--crear-guifo"><span
+                                class="recuadro--punteado cabecera__link">Crear
+                                Guifos</span></button>
+                        <!-- <a class="cabecera__link boton boton--crear-guifo" href="">Crear Guifos</a> -->
+                        <div class="cabecera__themes">
+                            <div class="cabecera__boton-themes">
+                                <!-- <a class="cabecera__link boton boton--elegir-tema" href="">Elegir tema</a> -->
+                                <div class="cabecera__link boton boton--elegir-tema"><span
+                                        class="recuadro--punteado cabecera__link">Elegir tema</span></div>
+                                <button class="cabecera__link boton boton--flecha" href=""
+                                    onclick="displayNoneBlock('idthemesdetalle', '')"><span
+                                        class="recuadro--punteado cabecera__link"><img src="./assets/dropdown.svg"
+                                            alt=""></span></button>
+                            </div>
+                            <div id="idthemesdetalle">
+                                <div class="cabecera__themes-detalle">
+                                    <!-- <div class="cabecera__tema">Sailor Day</div> -->
+                                    <button class="cabecera__tema cabecera__tema--sailor-day" href=""
+                                        onclick="cambiarTheme('0')">Sailor
+                                        Day</button>
+                                    <button class="cabecera__tema" href="" onclick="cambiarTheme('1')">Sailor
+                                        Night</button>
+                                    <!-- <div class="cabecera__tema">Sailor Night</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <a class="cabecera__link cabecera__link--mis-guifos" href="./upload.html"><span
+                                class="cabecera__link--mis-guifos-span">M</span>is Guifos</a>
+                    </div>
+                </header>
+
+                <main>
+                    <div class="buscar">
+                        <div class="buscar__barra barra-gradiente">Buscar</div>
+                        <div class="buscar__search">
+                            <!-- <div>Busca gifs, hashtags, temas, busca lo que quieras…</div> -->
+                            <input class="buscar__input" type="text" name="buscarinput" id="buscarinput"
+                                placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
+                            <!-- <a class="boton boton--buscar" href="" onclick="myFunction()">Buscar</a> -->
+                            <button class="boton boton--buscar boton--buscar-color botonClick" id="btnBuscar"
+                                href="">Buscar</button>
+                        </div>
+                    </div>
+                    <div id="idbuscar">
+                        <div class="buscar">
+                            <div class="buscar__opciones">
+                                <button class="buscar__opciones-detalle botonClick" id="btnSugerencia1"
+                                    onclick="palabraBoton('Kittens')">Kittens</button>
+                                <button class="buscar__opciones-detalle botonClick" id="btnSugerencia2"
+                                    onclick="palabraBoton('Puppies')">Puppies</button>
+                                <button class="buscar__opciones-detalle botonClick" id="btnSugerencia3"
+                                    onclick="palabraBoton('Unicorns')">Unicorns</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sugerencias">
+                        <div class="rectangulo">
+                            Hoy te sugerimos:
+                        </div>
+                        <div class="sugerencias__gifs">
+                            <div class="sugerencias__box">
+                                <div class="sugerencias__barra buscar__barra barra-gradiente">#Jonathanvanness
+                                    <img class="botonClick" id="btnClose" src="./assets/close.svg" alt=""
+                                        onclick="palabraBoton('Undefined')">
+                                </div>
+                                <div class="sugerencias__gif-container">
+                                    <img class="sugerencias__gif"
+                                        src="https://media0.giphy.com/media/5PhoLTGAiHguInjU8w/giphy-downsized.gif?cid=a7013e41615050a292b7244006620eef160216d1cc62f51c&rid=giphy-downsized.gif"
+                                        alt="Jonathanvanness">
+                                    <button class="sugerencias__ver-mas botonClick" id="btnVerMas"
+                                        onclick="palabraBoton('Jonathan vanness')"><span class="recuadro--punteado">Ver
+                                            más…</span></button>
+                                </div>
+                            </div>
+                            <div class="sugerencias__box">
+                                <div class="sugerencias__barra buscar__barra barra-gradiente">#SailorMercury
+                                    <img class="botonClick" id="btnClose1" src="./assets/close.svg" alt=""
+                                        onclick="palabraBoton('Undefined')">
+                                </div>
+                                <div class="sugerencias__gif-container">
+                                    <img class="sugerencias__gif"
+                                        src="https://media3.giphy.com/media/CW0RoZIy3qiWc/giphy.gif?cid=a7013e41aae8b60ef946b96bda4acf2b8352ea7d247464bf&rid=giphy.gif"
+                                        alt="Jonathanvanness">
+                                    <button class="sugerencias__ver-mas botonClick" id="btnVerMas1"
+                                        onclick="palabraBoton('Sailor Mercury')"><span class="recuadro--punteado">Ver
+                                            más…</span></button>
+                                </div>
+                            </div>
+                            <div class="sugerencias__box">
+                                <div class="sugerencias__barra buscar__barra barra-gradiente">#FabFive
+                                    <img class="botonClick" id="btnClose2" src="./assets/close.svg" alt=""
+                                        onclick="palabraBoton('Undefined')">
+                                </div>
+                                <div class="sugerencias__gif-container">
+                                    <img class="sugerencias__gif"
+                                        src="https://media0.giphy.com/media/JmVVleFV2ubiY6jNNz/giphy.gif?cid=a7013e4126819d9c233ea11d0fa6e93e35c1674d6e7ccb37&rid=giphy.gif"
+                                        alt="Jonathanvanness">
+                                    <button class="sugerencias__ver-mas botonClick" id="btnVerMas2"
+                                        onclick="palabraBoton('Fab Five')"><span class="recuadro--punteado">Ver
+                                            más…</span></button>
+                                </div>
+                            </div>
+                            <div class="sugerencias__box">
+                                <div class="sugerencias__barra buscar__barra barra-gradiente">#Unicorns
+                                    <img class="botonClick" id="btnClose3" src="./assets/close.svg" alt=""
+                                        onclick="palabraBoton('Undefined')">
+                                </div>
+                                <div class="sugerencias__gif-container">
+                                    <img class="sugerencias__gif"
+                                        src="https://media1.giphy.com/media/l2SpZhkhbOcnpwiRO/giphy.gif?cid=a7013e41bfffe65fda5233ecf302b889b6e4477804a3ac5f&rid=giphy.gif"
+                                        alt="Jonathanvanness">
+                                    <button class="sugerencias__ver-mas botonClick" id="btnVerMas3"
+                                        onclick="palabraBoton('Unicorns & Rainbows')"><span
+                                            class="recuadro--punteado">Ver
+                                            más…</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rectangulo" id="content">
+                        Tendencias:
+                    </div>
+
+                    <div class="buscados">
+
+                    </div>
+                    <script src="./app.js"></script>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

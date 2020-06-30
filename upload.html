@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar barra-gradiente">
+            ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803
+        </nav>
+        <div class="master-div">
+            <div class="div-principal">
+                <header class="cabecera">
+                    <!-- <img class="cabecera__logo" alt="gifOFLogo"> -->
+                    <div class="cabecera__logo"></div>
+                    <div class="cabecera__botonera">
+                        <button id="cguifos" class="cabecera__link boton boton--crear-guifo"><span
+                                class="recuadro--punteado cabecera__link">Crear
+                                Guifos</span></button>
+                        <!-- <a class="cabecera__link boton boton--crear-guifo" href="">Crear Guifos</a> -->
+                        <div class="cabecera__themes">
+                            <div class="cabecera__boton-themes">
+                                <!-- <a class="cabecera__link boton boton--elegir-tema" href="">Elegir tema</a> -->
+                                <div class="cabecera__link boton boton--elegir-tema"><span
+                                        class="recuadro--punteado cabecera__link">Elegir tema</span></div>
+                                <button class="cabecera__link boton boton--flecha" href=""
+                                    onclick="displayNoneBlock('idthemesdetalle', '')"><span
+                                        class="recuadro--punteado cabecera__link"><img src="./assets/dropdown.svg"
+                                            alt=""></span></button>
+                            </div>
+                            <div id="idthemesdetalle">
+                                <div class="cabecera__themes-detalle">
+                                    <!-- <div class="cabecera__tema">Sailor Day</div> -->
+                                    <button class="cabecera__tema cabecera__tema--sailor-day" href=""
+                                        onclick="cambiarTheme('0')">Sailor
+                                        Day</button>
+                                    <button class="cabecera__tema" href="" onclick="cambiarTheme('1')">Sailor
+                                        Night</button>
+                                    <!-- <div class="cabecera__tema">Sailor Night</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <a class="cabecera__link cabecera__link--mis-guifos" href=""><span
+                                class="cabecera__link--mis-guifos-span">M</span>is Guifos</a>
+                    </div>
+                </header>
+
+                <main>
+                    <div class="container-subir-gif">
+                        <div class="upload-intro-wrapper flex-center-content">
+                            <div class="upload-box-container box" id="pre-upload-text">
+                                <div class="barra-gradiente box-header">Crear GIFos</div>
+                                <div class="centrar">
+                                    <div class="upload-intro">
+                                        <img class="retro-icon" src="./assets/window_img.png">
+                                        <h2 class="negrita"> Aquí podrás crear tus propios guifos</h2>
+                                        <br>
+                                        <span>Crear tu <span class="negrita">guifo</span> es muy fácil, graba cualquier
+                                            imagen
+                                            con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo
+                                            son:</span>
+                                        <br><br>
+                                        <div><span class="negrita">1)</span> Dar permisos de acceso a la cámara (sólo
+                                            por el
+                                            tiempo de uso)</div>
+                                        <div><span class="negrita">2)</span> Capturar tu momento guifo</div>
+                                        <div><span class="negrita">3)</span> Revisar el momento</div>
+                                        <div><span class="negrita">4)</span> Listo para subir y compartir!</div>
+                                        <br>
+
+                                        <span>¿Quieres comenzar a crear tu <span class="negrita">guifo</span>
+                                            ahora?</span>
+                                    </div>
+                                    <div class="upload-button-wrapper">
+                                        <div class="boton boton--crear-guifo header-button button button-inactive"
+                                            id="cancel">
+                                            <a href="./index.html">Cancelar</a></div>
+                                        <div class="boton boton--crear-guifo header-button button button-active"
+                                            id="start">
+                                            Comenzar</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upload-video-container box hidden" id="pre-upload-video">
+                                <div class="barra-gradiente box-header">Crear Guifos</div>
+                                <div class="video-stream">
+                                    <video></video>
+                                    <img class="video-preview hidden" id="preview">
+                                    <div class="video-upload-message hidden" id="upload-msg">
+                                        <h2>Estamos subiendo tu guifo…</h2>
+                                        <span>Esto puede tomar unos minutos</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                            <div class="progress-bar-item"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hacer-flex record-button-wrapper">
+                                    <div id="timer" class="timer-container"></div>
+                                    <div class="record-button-container" id="video-record-buttons">
+                                        <div class="hacer-flex">
+                                            <div class="boton boton--flecha header-dropdown button button-active"
+                                                id="stop">
+                                                <img src="./assets/camera.svg" id="camera-button">
+                                            </div>
+                                            <div class="boton boton--crear-guifo header-button button button-active record-button"
+                                                id="record">Capturar
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="record-button-container hidden" id="video-upload-buttons">
+                                        <div class="hacer-flex">
+                                            <div class="boton boton--crear-guifo header-button button button-inactive"
+                                                id="restart">Repetir Captura</div>
+                                            <div class="boton boton--crear-guifo header-button button button-active"
+                                                id="upload">Subir Guifo</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="share-modal-wrapper hidden" id="share-modal-wrapper">
+                            <div class="box">
+
+                                <div class="barra-gradiente box-header">
+                                    <span>Guifo Subido con Exito</span>
+                                    <img src="./assets/button3.svg" id="finish">
+                                </div>
+                                <div class="opciones-ventana-final">
+                                    <div class="share-img">
+                                        <img src="" id="share-modal-preview">
+                                    </div>
+                                    <div class="share-modal" id="share-modal">
+
+                                        <div class="botones-ventana-final">
+                                            <h2 class="negrita">Guifo creado con éxito</h2>
+                                            <div class="button button-inative share-button" id="copy">
+                                                Copiar Enlace Guifo</div>
+                                            <span id="link-success" class="hidden">Enlace Copiado!</span>
+                                            <div class="button button-inactive share-button download"><a id="download"
+                                                    target="_blank">Descargar Guifo</a></div>
+                                            <div class="button button-inactive share-button" id="embed">Embeber Guifo
+                                            </div>
+                                        </div>
+                                        <div id="copy-success" class="copy-success box hidden" class=""></div>
+                                        <div class="share-done">
+                                            <div class="boton boton--crear-guifo button share-button button-active"
+                                                id="share-done">
+                                                Listo</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rectangulo" id="content">
+                        Mis guifos:
+                    </div>
+                    <div class="gallery-container">
+                        <div class="results-wrapper" id="gallery">
+                            <div class="results-container" id="results"></div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+    <script src="./upload.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js" type="text/javascript"></script>
+</body>
+
+</html>

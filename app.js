@@ -6,7 +6,7 @@ let buscarInputElement = document.getElementById("buscarinput");
 let btnBuscar = document.getElementById("btnBuscar");
 let botones = document.getElementsByClassName("botonClick");
 let out = document.querySelector(".buscados");
-let logo = document.querySelector(".cabecera__logo");
+let logo = document.getElementById("logo");
 
 let palabraBoton = (palabra) => buscarInputElement.value = palabra;
 
@@ -37,7 +37,7 @@ let propiedadesThemes =
         {//Sailor Day = 0
             colorFondoBody: "rgba(247, 201, 243,0.2)",
             gradienteTheme: "linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%)",
-            gifOfLogo: "/assets/gifOF_logo.png",
+            gifOfLogo: "./assets/gifOF_logo.png",
             colorFontBotonesRosa: "#110038",
             colorBotonRosa: "#F7C9F3",
             colorBotonRosaHover: '#E6BBE2',
@@ -50,7 +50,7 @@ let propiedadesThemes =
         {//Sailor Night = 1
             colorFondoBody: "rgba(19, 15, 64,1.0)",
             gradienteTheme: "linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%)",
-            gifOfLogo: "/assets/gifOF_logo_dark.png",
+            gifOfLogo: "./assets/gifOF_logo_dark.png",
             colorFontBotonesRosa: "#FFFFFF",
             colorBotonRosa: "#EE3EFE",
             colorBotonRosaHover: '#CE36DB',
@@ -72,7 +72,7 @@ function cambiarTheme(indiceTheme) {
             //root.style.setProperty('--colorFondoBody', "rgba(19, 15, 64,1.0)");
             root.style.setProperty("--" + propiedades[i], GetPropertyValue(propiedadesThemes[indiceTheme], propiedades[i]));
         } else {
-            logo.src = GetPropertyValue(propiedadesThemes[indiceTheme], propiedades[i]);
+            window.logo.src = GetPropertyValue(propiedadesThemes[indiceTheme], propiedades[i]);
         }
     }
 }

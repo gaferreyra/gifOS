@@ -19,7 +19,7 @@
     --font-size-1: 12px;
     --font-size-2: 14px;
     --font-size-3: 16px;
-    --gifOfLogo: url("/assets/gifOF_logo.png");
+    --gifOfLogo: url("./assets/gifOF_logo.png");
 }
 
 *{

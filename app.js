@@ -1,23 +1,26 @@
 const apikey = "AaJcPBnKSjF8ltWIcB6PK4U28cyaZ2J5";
 const urlGiphy = "https://api.giphy.com/v1/gifs/";
 
-
 let buscarInputElement = document.getElementById("buscarinput");
 let btnBuscar = document.getElementById("btnBuscar");
+let logo = document.getElementById("logo");
+let cguifos = document.getElementById("cguifos");
+let misGuifos = document.getElementById("misGuifos");
 let botones = document.getElementsByClassName("botonClick");
 let out = document.querySelector(".buscados");
-let logo = document.getElementById("logo");
 
 let palabraBoton = (palabra) => buscarInputElement.value = palabra;
+
+let indiceTheme = sessionStorage.getItem("theme");
+
+if (indiceTheme == null) {
+    sessionStorage.setItem('theme', "0");
+}
+
 
 function displayNoneBlock(idNodo, valor) {
 
     let nodo = document.getElementById(idNodo);
-
-    //console.log("nodo: ", nodo);
-    //console.log("nodo: ", window.getComputedStyle(nodo));
-    //console.log("1: ", nodo.style.display);
-    //console.log("2: ", window.getComputedStyle(nodo).display);
 
     if (valor == "") {
         if (window.getComputedStyle(nodo).display === "none") {
@@ -29,8 +32,6 @@ function displayNoneBlock(idNodo, valor) {
         nodo.style.display = valor;
     }
 }
-
-
 
 let propiedadesThemes =
     [
@@ -63,10 +64,11 @@ let propiedadesThemes =
     ];
 
 
-function cambiarTheme(indiceTheme) {
+function cambiarTheme() {
+    indiceTheme = sessionStorage.getItem("theme");
     let propiedades = Object.keys(propiedadesThemes[indiceTheme]);
     let root = document.documentElement;
-    //console.log("root", root);
+
     for (i = 0; i < propiedades.length; i++) {
         if (propiedades[i] != "gifOfLogo") {
             //root.style.setProperty('--colorFondoBody', "rgba(19, 15, 64,1.0)");
@@ -75,6 +77,11 @@ function cambiarTheme(indiceTheme) {
             window.logo.src = GetPropertyValue(propiedadesThemes[indiceTheme], propiedades[i]);
         }
     }
+}
+
+function cambiarThemeSessionStorage(indiceTheme2) {
+    sessionStorage.setItem('theme', indiceTheme2);
+    cambiarTheme();
 }
 
 function GetPropertyValue(object, dataToRetrieve) {
@@ -86,7 +93,6 @@ function GetPropertyValue(object, dataToRetrieve) {
 }
 
 for (const iterator of botones) {
-    console.log("botones6 id : ", iterator.id);
     document.getElementById(iterator.id).addEventListener("click", ev => { buscargif(iterator.id) });
 }
 
@@ -143,16 +149,20 @@ function buscaGiphy(url, endpoint, apikey, cantidadGif, palabraABuscar) {
     fetch(urlCompleta)
         .then(response => response.json())
         .then(content => {
-            out.innerHTML = "";
-            for (const iterator of content.data) {
-                let fig = document.createElement("figure");
-                let img = document.createElement("img");
-                img.src = iterator.images.downsized.url;
-                img.alt = iterator.title;
-                img.classList.add("buscados__gif");
-                fig.classList.add("buscados__gif");
-                fig.appendChild(img);
-                out.insertAdjacentElement("afterbegin", fig);
+            try {
+                out.innerHTML = "";
+                for (const iterator of content.data) {
+                    let fig = document.createElement("figure");
+                    let img = document.createElement("img");
+                    img.src = iterator.images.downsized.url;
+                    img.alt = iterator.title;
+                    img.classList.add("buscados__gif");
+                    fig.classList.add("buscados__gif");
+                    fig.appendChild(img);
+                    out.insertAdjacentElement("afterbegin", fig);
+                }
+            }
+            catch{
             }
         })
         .catch(err => {
@@ -186,3 +196,15 @@ try {
 catch{
 }
 
+misGuifos.addEventListener("click", (ev) => {
+    sessionStorage.setItem('botonclick', misGuifos.id);
+    location.href = './upload.html';
+});
+
+cguifos.addEventListener("click", (ev) => {
+    sessionStorage.setItem('botonclick', cguifos.id);
+    location.href = './upload.html';
+    cambiarTheme();
+});
+
+cambiarTheme();

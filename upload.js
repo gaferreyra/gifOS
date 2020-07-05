@@ -19,6 +19,8 @@ const dropdown = document.getElementById("dropdown");
 const light = document.getElementById("light");
 const dark = document.getElementById("dark");
 
+let ocultarContainerSubirGif = document.getElementById("ocultarContainerSubirGif");
+
 //RECORDRTC
 let recorder;
 let recording = false;
@@ -60,10 +62,6 @@ function getStreamAndRecord() {
                     record.innerHTML = 'Listo';
                     stop.classList.add('boton-grabando');
 
-                    //document.getElementById('timer').classList.remove('hidden');
-                    //btnContainer.style.justifyContent = "space-between";
-                    //gifCapturaHead.innerHTML = "Capturando Tu Guifo";
-                    // para cortar stream de la camara
                     recorder.camera = stream;
                 } else {
                     this.disabled = true;
@@ -81,39 +79,34 @@ function stopRecordingCallback() {
 
     upload.addEventListener('click', () => {
         uploadMessage.classList.remove('hidden');
+        uploadMessage.classList.add('mostrar-display-flex');
         preview.classList.add('hidden');
         animateProgressBar(progressBar);
         uploadGif(form);
-        //btnStage4.classList.add('hidden');
-        //cancel.classList.remove('hidden');
-        //document.getElementById('timer').classList.add('hidden');
-        //btnContainer.style.justifyContent = "flex-end";
-        //gifCapturaHead.innerHTML = "Subiendo Gifo";
     })
     objectURL = URL.createObjectURL(recorder.getBlob());
     preview.src = objectURL;
     preview.classList.remove('hidden')
     video.classList.add('hidden')
-    //record.classList.add('hidden');
-    //btnStage4.classList.remove('hidden');
+
     document.getElementById('video-record-buttons').classList.add('hidden');
     document.getElementById('video-upload-buttons').classList.remove('hidden');
-    //gifCapturaHead.innerHTML = "Vista Previa";
+
     recorder.destroy();
     recorder = null;
 }
 start.addEventListener('click', () => {
     document.getElementById('pre-upload-text').classList.add('hidden');
     document.getElementById('pre-upload-video').classList.remove('hidden');
-    //stage1.classList.add('hidden');
-    //stage2.classList.remove('hidden');
+    document.getElementById('pre-upload-video').classList.add('mostrar-display-flex');
+
     getStreamAndRecord()
 });
 restart.addEventListener('click', () => {
     location.reload();
     getStreamAndRecord()
 })
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function getDuration() {
     let seconds = 0;
     let minutes = 0;
@@ -153,13 +146,14 @@ function uploadGif(gif) {
         method: 'POST',
         body: gif,
     }).then(res => {
-        console.log(res.status)
+
         if (res.status != 200) {
             uploadMessage.innerHTML = `<h3>Hubo un error subiendo tu Guifo</h3>`
         }
         return res.json();
     }).then(data => {
         uploadMessage.classList.add('hidden');
+        document.getElementById('pre-upload-video').classList.remove('mostrar-display-flex');
         document.getElementById('pre-upload-video').classList.add('hidden');
         document.getElementById('share-modal-wrapper').classList.remove('hidden')
         const gifId = data.data.id
@@ -180,10 +174,6 @@ function getGifDetails(id) {
             document.getElementById('share-modal-preview').src = data.data.images.fixed_height.url;
             const copyModal = document.getElementById('copy-success');
             preview.classList.remove('hidden');
-            //main.classList.add('gray');
-            //nav.classList.add('gray');
-            //header.classList.add('gray');
-            //mainLogo.classList.add('gray');
 
             download.href = gifUrl
             copy.addEventListener('click', async () => {
@@ -210,18 +200,17 @@ function getMyGifs() {
     let items = [];
     for (var i = 0; i < localStorage.length; i++) {
         let item = localStorage.getItem(localStorage.key(i))
-        console.log(item)
+
         if (item.includes('data')) {
             itemJson = JSON.parse(item)
             items.push(itemJson.data.images.fixed_height.url)
-            console.log(items)
         }
     }
     return items
 }
 window.addEventListener('load', () => {
     const localGifs = getMyGifs()
-    console.log(localGifs)
+
     localGifs.forEach(item => {
         const img = document.createElement('img')
         img.src = item;
@@ -236,3 +225,9 @@ document.getElementById('share-done').addEventListener('click', () => {
     location.reload();
 })
 
+
+if (sessionStorage.getItem("botonclick") == "cguifos") {
+    ocultarContainerSubirGif.classList.remove('hidden');
+}
+
+cambiarTheme();
